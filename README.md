@@ -34,6 +34,8 @@ Don't forget to edit
   config/environments/initializers/omniauth.rb
 		-- provider :twitter, '***', '***'
                 -- provider :facebook, '***', '***'
+  config/environments/initializers/devise.rb
+		-- config.mailer_sender = " email "
   
 
 mirror on [template.shs-team.ru](http://template.shs-team.ru/)
