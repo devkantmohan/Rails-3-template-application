@@ -1,21 +1,28 @@
 Rails 3 template site.
+=============
 
-Template consist of
-  authentification module:
+Summary
+-----
+
+Rails 3 Template consist of
+  authentification module
 	 - devise
 	 - onmiauth 
 	 - openID
 	 - gravatar image
 	 - humanizer(like captcha)
-  themes module:
+  ,themes module
   	 - web-app-theme
-  simple Item controller
+  ,simple Item controller
 	- paperclip
 	- will_paginate (ajax)
 	- search (ajax)
 	- autocomplete
 
 Project uses JQuery insead of Prototype. Easy to modify.
+
+Usage
+-----
 
 Don't forget to edit 
   config/database.yml,  
@@ -29,11 +36,15 @@ Don't forget to edit
                 -- provider :facebook, '***', '***'
   
 
-mirror on template.shs-team.ru
+mirror on [template.shs-team.ru](http://template.shs-team.ru/)
 
 ![Template application screenshot](http://dl.dropbox.com/u/3310118/template_shot.png)
 
 Feel free to give an advice :)
 
+Author
+------
+
+Willy Shark - [http://shs-team.ru](http://shs-team.ru)
 mailto: master@shs-team.ru
 
