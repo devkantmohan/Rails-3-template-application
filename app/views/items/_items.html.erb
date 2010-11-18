@@ -1,0 +1,39 @@
+
+
+
+<table class="table">
+        <tr>
+          <th class="first">ID</th>
+                    <th>
+            <%= t("activerecord.attributes.item.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+          </th>
+                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @items.each do |item| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= item.id %>
+          </td>
+                    <td>
+            <%= link_to item.name, item_path(item) %>
+          </td>
+                    <td>
+            <%= item.created_at.strftime('%m-%d-%Y') %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", item_path(item) %> |
+            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_item_path(item) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", item, :confirm => 'Are you sure?', :method => :delete , :no_js_no_follow=>true  %>
+          </td>
+        </tr>
+        <% end -%>
+      </table>
+
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+
+        <%= will_paginate @items  %>
+
+      </div>

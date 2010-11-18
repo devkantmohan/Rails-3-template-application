@@ -1,0 +1,115 @@
+
+
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", items_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_item_path %></li>
+      <li style="float:right;">
+        
+        <%= form_tag items_path, :method => 'get', :remote => true, :id=>"search", :onsubmit=>"show_loader()" do %>
+            Search&nbsp;<%= text_field_tag :search, params[:search], :class=>'search' %>
+            <%= submit_tag "Search", :name => nil, :class=>'submit' %>
+        <% end %>
+
+      </li>
+    </ul>
+    
+  </div>          
+  <div class="content">          
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Items</h2>
+    
+    <div class="loader"></div>
+
+    <div class="inner" id="ajax_items">
+         <%= render :partial => "items", :locals => { :items => @items } %>
+
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>
+
+<script type="text/javascript">
+              $(function () {
+                  $('.pagination a').live("click", function () {
+                  $('.loader').css('display','inline-block');
+                   $.get(this.href, null, null, 'script');
+                     return false;
+                    });
+
+               });
+
+
+$(function() {
+		
+		$.ajax({
+			url: "<%=items_path(:xml)%>",
+			dataType: "xml",
+			success: function( xmlResponse ) {
+				var data = $( "item", xmlResponse ).map(function() {
+					return {
+						value: $( "name", this ).text() +
+							( $.trim()  ),
+						id: $( "name", this ).text()
+					};
+				}).get();
+				$( ".search" ).autocomplete({
+					source: data,
+					minLength: 0,
+					select: function( event, ui ) {
+				$.get("<%=items_path(:js)%>", { search:  ui.item.value } );
+                                    $('.loader').css('display','inline-block');
+					}
+				});
+			}
+		});
+	});
+
+        function show_loader()
+        {
+                $('.loader').css('display','inline-block');
+        }
+
+
+
+	
+	</script>
+
+
+
+
+<style type="text/css">
+
+.ui-autocomplete-loading {
+background: white url('images/jqueryui/ui-anim_basic_16x16.gif') right center no-repeat;
+}
+
+.loader {
+background: white url('images/jqueryui/ui-anim_basic_16x16.gif') right center no-repeat;
+width: 10px;
+height: 10px;
+float: right;
+display: none;
+position: relative;
+bottom: 53px;
+right: 10px;
+}
+
+.display_none
+{
+  display: none;
+}
+
+#search input.search{
+   margin-top: 4px;
+   margin-right: 5px;
+}
+
+
+#search input.submit {
+  display: none;
+}
+
+
+</style>

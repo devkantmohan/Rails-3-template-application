@@ -1,0 +1,155 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery.validity.js' %>
+  <%= stylesheet_link_tag   "jquery.validity.css" %>
+
+<% end %>
+
+<div id="box">
+    <%= devise_error_messages! %>
+    <div class="block" id="block-signup">
+        <h2>Sign up</h2>
+        <div class="content">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class=>'form'}) do |f| %>
+
+            <div class="group wat-cf">
+              <div class="left">
+                <label class="label">Name</label>
+              </div>
+              <div class="right">
+                <%= f.text_field :name , :class=>'text_field' %>
+                <span class="description">Your name</span>
+
+              </div>
+            </div>
+            <div class="group wat-cf">
+              <div class="left">
+                <label class="label">Lastname</label>
+              </div>
+              <div class="right">
+                 <%= f.text_field :lastname , :class=>'text_field' %>
+                <span class="description">Your lastname</span>
+              </div>
+            </div>
+
+          <div class="group wat-cf">
+              <div class="left">
+                <label class="label">Email</label>
+              </div>
+              <div class="right">
+
+                <%= f.text_field :email, :class=>'text_field' %>
+                <span class="description">Ex: test@example.com </span>
+              </div>
+            </div>
+
+            <div class="group wat-cf">
+              <div class="left">
+                <label class="label">Password</label>
+              </div>
+              <div class="right">
+
+                <%= f.password_field :password , :class=>'text_field' %>
+                <span class="description">At least 5 simbols</span>
+              </div>
+            </div>            
+
+             <div class="group wat-cf">
+              <div class="left">
+                <label class="label">Password confirmation</label>
+              </div>
+              <div class="right">
+
+                <%= f.password_field :password_confirmation , :class=>'text_field' %>
+                <span class="description">Repeat your password</span>
+              </div>
+            </div>
+          
+             <div class="group wat-cf">
+              <div class="left">
+                <%= f.label :humanizer_answer, @user.humanizer_question, :class=>'label' %>
+              </div>
+              <div class="right">
+
+                <%= f.text_field :humanizer_answer, :class=>'text_field' %>
+                <%= f.hidden_field :humanizer_question_id %>
+                <span class="description">Please enter the answer</span>
+              </div>
+            </div>
+          
+           
+
+          <div style="display: inline-block;">
+
+          <div class="group navform wat-cf"  >
+              <button class="button" type="submit">
+                <%= image_tag 'web-app-theme/icons/tick.png', :alt=>"Save" %>
+                Signup
+                <%= f.submit "Sign up", :class=>"input_button" %>
+              </button>
+            </div>
+            </div>
+          <% end %>
+
+        </div>
+    </div>
+
+ </div>
+
+ <br/>
+
+
+<%= render :partial => "devise/shared/links" %>
+
+<style type="text/css">
+
+  #main
+  {
+    width: 100%;
+    text-align: center;
+
+  }
+
+  #box{
+    display: inline-block;
+    margin: 0px;
+  }
+
+  .label{
+    text-align: right;
+  }
+
+ 
+  .right{
+    text-align: left;
+  }
+
+  
+ 
+</style>
+
+ <script type="text/javascript">
+   $(function() {
+
+                    $(".form").validity(function() {
+
+                        $("#user_name")
+                            .require();
+
+                        $("#user_password")
+                            .require()                            
+                            .minLength( 5, ['too short'] )
+                            .maxLength( 45, ['too big'] );
+
+                        $("#user_password_confirmation")
+                            .require();
+
+                        $("#user_email")
+                            .require()
+                            .match("email");
+                            
+
+                    });
+
+                });
+
+ </script>

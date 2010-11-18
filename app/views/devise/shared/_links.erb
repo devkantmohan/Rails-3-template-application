@@ -1,0 +1,42 @@
+ <p class="px14"><strong>Get in through one of these services:</strong></p>
+
+ <div class="link_box">
+   <a href="/auth/twitter" class="auth_provider">
+     <%= image_tag "social-icons/twitter_64.png", :size => "64x64", :alt => "Twitter" %>Twitter</a>
+ </div>
+
+ <div class="link_box">
+   <a href="/auth/facebook" class="auth_provider">
+     <%= image_tag "social-icons/facebook_64.png", :size => "64x64", :alt => "Facebook" %>Facebook</a>
+ </div>
+
+ <div class="link_box">
+   <%=link_to ((image_tag "social-icons/openid_64.png", :size => "64x64", :alt => "OpenID")+"OpenID"),"/auth/open_id",
+     :class => "auth_provider"%>
+   </div>
+   <div class="clear"></div>
+   <br/>
+ 
+<div class="devise_links">
+
+<%- if controller_name != 'sessions' %>
+  <%= link_to "Sign in", new_session_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+<% end -%>
+
+<%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
+  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+<% end -%>
+  </div>
+ <br/> <br/> <br/>

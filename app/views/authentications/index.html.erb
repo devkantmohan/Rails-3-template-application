@@ -1,0 +1,119 @@
+<div class="block notice" style="width: 100%; padding: 15px;">
+  <h2>Authentification list</h2>
+  <div class="content">
+
+    <table>
+      <tr>
+        <td valign="top">
+          <div class="boxer">
+
+               <% if @authentications %>
+                <% unless @authentications.empty? %>
+                 <p><strong>You can sign in to this account using:</strong></p>
+                  <div class="authentications">
+                   <% for authentication in @authentications %>
+                    <div class="authentication">
+                     <%= image_tag "social-icons/#{authentication.provider}_32.png",
+                     :size => "32x32" %>
+
+                      <div class="provider">
+                       <%= authentication.provider_name %>
+                      </div>
+
+                      <div class="remove_div">
+                      <%= link_to "X", authentication, :confirm =>
+                     'Are you sure you want to remove this authentication
+                     option?', :method => :delete, :class => "remove" %>
+                    </div>
+                      </div>
+                    <% end %>
+                    <div class="clear"></div>
+                   </div>
+                  <% end %>
+                  <p><strong>Add another service to sign in with:</strong></p>
+                 <% else %>
+                 <p><strong>Sign in through one of these services:</strong></p>
+               <% end %>
+             <div class="link_box">
+               <a href="/auth/twitter" class="auth_provider">
+                 <%= image_tag "social-icons/twitter_64.png", :size => "64x64",
+                 :alt => "Twitter" %>Twitter</a>
+             </div>
+             <div class="link_box">
+               <a href="/auth/facebook" class="auth_provider">
+                 <%= image_tag "social-icons/facebook_64.png", :size => "64x64",
+                 :alt => "Facebook" %>Facebook</a>
+               </div>
+
+                     <div class="link_box">
+               <a href="/auth/open_id" class="auth_provider">
+                 <%= image_tag "social-icons/openid_64.png", :size => "64x64",
+                 :alt => "OpenID" %>OpenID</a> </div>
+
+               <div class="clear"></div>
+                 </div>
+        </td>
+        <td valign="top">
+              <div class="boxer">
+    <h4>Authentification information</h4>
+    <div>
+        <p><strong>Name: </strong><%= current_user.name %></p>
+        
+    </div><!--/#name-wrap-->
+     <div id="name-wrap" class="slider">
+       <p><strong>lastname: </strong><%= current_user.lastname %></p>
+        
+    </div><!--/#name-wrap-->
+    <div id="email-wrap" class="slider">
+       <p><strong>E-mail: </strong><%= current_user.email %></p>
+    </div><!--/#email-wrap-->
+    </div>
+        </td>
+      </tr>
+    </table>
+
+
+
+    
+
+    
+  </div>
+  
+</div>
+   <style type="text/css">
+     
+     .authentication{
+        display: block;
+        float: left;
+        margin: 5px;
+        width: 64px;
+        height: 64px;
+        text-align: center;
+      }
+
+      .authentication a{
+        text-decoration: none;
+      }
+
+      .authentication a:hover{
+        text-decoration: underline;
+      }
+
+
+      .authentication .provider{
+        text-align: center;
+
+
+      }
+
+      .authentication .remove_div{
+        display: inline-block;
+        position:relative;
+        bottom:57px;
+        left: 21px;
+      }
+
+
+
+
+</style>

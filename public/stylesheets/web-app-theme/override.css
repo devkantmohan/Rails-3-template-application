@@ -1,0 +1,164 @@
+
+h2{
+    margin-left: 15px;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: none;
+    letter-spacing: -1px;
+    line-height: 1.2em;
+}
+
+
+
+#box {
+    width: 500px;
+    margin: 0px;
+    margin-left: 50px;
+    margin-top: 30px;
+}
+
+#box .block .content
+{
+padding-top: 20px;
+
+}
+
+.px14{
+    font-size: 14px;
+}
+
+.checkbox_field
+{
+    text-align: left;
+    display: block;
+}
+
+.link_box
+{
+ display: inline-block;
+ text-align: center;
+ margin: 3px;
+}
+
+.link_box .auth_provider{
+     float: left;
+     max-width: 64px;
+     font-size: 14px;
+     text-decoration: none;
+
+}
+
+.link_box .auth_provider:hover{
+
+     text-decoration: underline;
+
+}
+
+.link_box .auth_provider img{
+     float: left;
+}
+
+.devise_links{
+     font-size: 14px;
+     line-height: 22px;
+     text-decoration: none;
+}
+
+
+.boxer{
+        max-width: 300px;
+        padding: 20px 20px 20px 20px;
+        margin:10px;
+        background: #f7f7f7;
+         border: 1px solid #ddd;
+      }
+
+#info {
+    width: 360px;
+    padding: 20px 20px 20px 20px;
+    margin: auto;
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+}
+
+#info div {
+    clear: both;
+    position: relative;
+    margin: 0 0 10px;
+}
+
+#info label {
+    cursor: pointer;
+    display: block;
+}
+
+#info input[type =
+"text"] {
+    width: 300px;
+    border: 1px solid #999;
+    padding: 5px;
+    -moz-border-radius: 4px;
+}
+
+#info input[type =
+"text"]:focus {
+    border-color: #777;
+}
+
+#info input[name =
+"zip"] {
+    width: 150px;
+}
+
+/* submit button */
+#info input[type =
+"submit"] {
+    cursor: pointer;
+    border: 1px solid #999;
+    padding: 5px;
+    -moz-border-radius: 4px;
+    background: #eee;
+}
+
+#info input[type =
+"submit"]:hover, input[type = "submit"]:focus {
+    border-color: #333;
+    background: #ddd;
+}
+
+#info input[type =
+"submit"]:active {
+    margin-top: 1px;
+}
+
+.gravatar{
+   position: absolute;
+   top:10px;
+   right: 20px;
+   border: #999 solid thin;
+}
+
+.alert
+{
+    text-align: center;
+    background: #ffbbbb;
+    margin-top: 0pt;
+    margin-right: auto;
+    margin-bottom: 15px;
+    margin-left: auto;
+    border: #ffbbbb 1px solid ;
+    font-size: 14px;
+}
+
+#error_explanation li
+{
+    text-align: center;
+    background: #ffbbbb;
+    margin-top: 0pt;
+    margin-right: auto;
+    margin-bottom: 15px;
+    margin-left: auto;
+    border: #ffbbbb 1px solid ;
+    font-size: 14px;
+}
